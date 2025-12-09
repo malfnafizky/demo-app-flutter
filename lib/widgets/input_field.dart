@@ -1,3 +1,4 @@
+import 'package:demo_app/core/app_color.dart';
 import 'package:flutter/material.dart';
 
 class InputField extends StatelessWidget {
@@ -16,7 +17,10 @@ class InputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      decoration: InputDecoration(hintText: hintText),
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: TextStyle(color: AppPallete.borderColor),
+      ),
       validator: (value) {
         if (value!.isEmpty) {
           return '$hintText is missing';
