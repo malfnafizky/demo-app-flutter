@@ -1,8 +1,10 @@
-import 'package:demo_app/core/theme.dart';
-import 'package:demo_app/pages/auth/login_page.dart';
+import 'package:demo_app/core/configs/theme.dart';
+import 'package:demo_app/routes/app_router.dart';
+import 'package:demo_app/service_locator.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  setupServiceLocator();
   runApp(const MyApp());
 }
 
@@ -11,11 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Demo App',
       theme: AppTheme.lightThemeMode,
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      routerConfig: AppRouter().config(),
     );
   }
 }

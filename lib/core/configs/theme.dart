@@ -1,4 +1,4 @@
-import 'package:demo_app/core/app_color.dart';
+import 'package:demo_app/core/configs/app_color.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {

@@ -1,22 +1,28 @@
-import 'package:demo_app/core/app_color.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:demo_app/core/configs/app_color.dart';
+import 'package:demo_app/domain/usecases/user_sign_in.dart';
+import 'package:demo_app/pages/auth/signup_page.dart';
+import 'package:demo_app/routes/app_router.gr.dart';
+import 'package:demo_app/service_locator.dart';
 import 'package:demo_app/widgets/default_button.dart';
 import 'package:demo_app/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+@RoutePage(name: 'SignInRoute')
+class SigninPage extends StatefulWidget {
+  const SigninPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SigninPage> createState() => _SigninPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final _emailController = TextEditingController();
+class _SigninPageState extends State<SigninPage> {
+  final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _usernameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -48,14 +54,17 @@ class _LoginPageState extends State<LoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Email',
+                      'Username',
                       style: TextStyle(
                         fontSize: 16,
                         color: AppPallete.greyColor,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    InputField(hintText: 'Email', controller: _emailController),
+                    InputField(
+                      hintText: 'Enter username',
+                      controller: _usernameController,
+                    ),
                     const SizedBox(height: 14),
                     const Text(
                       'Password',
@@ -66,12 +75,22 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 8),
                     InputField(
-                      hintText: 'Password',
+                      hintText: 'Enter password',
                       controller: _passwordController,
                       isObsecureText: true,
                     ),
                     const SizedBox(height: 24),
-                    DefaultButton(buttonText: 'Sign In', onPressed: () {}),
+                    DefaultButton(
+                      buttonText: 'Sign In',
+                      onPressed: () {
+                        // context.router.replacePath('/main-page');
+                        final Map<String, dynamic> _userSignInParams = {
+                          'username': _usernameController.text.trim(),
+                          'password': _passwordController.text.trim(),
+                        };
+                        sl<UserSignInUseCase>().call(_userSignInParams);
+                      },
+                    ),
                   ],
                 ),
                 const SizedBox(height: 26),
@@ -101,7 +120,9 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(fontSize: 16, color: AppPallete.greyColor),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.pushRoute(const SignUpRoute());
+              },
               style: ButtonStyle(
                 padding: WidgetStateProperty.all(EdgeInsets.zero),
               ),

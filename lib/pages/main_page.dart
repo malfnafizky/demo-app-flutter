@@ -1,17 +1,19 @@
-import 'package:demo_app/core/app_color.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:demo_app/core/configs/app_color.dart';
 import 'package:demo_app/pages/dashboard/dashboard_page.dart';
 import 'package:demo_app/pages/home/home_page.dart';
 import 'package:demo_app/pages/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 
-class BasePage extends StatefulWidget {
-  const BasePage({super.key});
+@RoutePage(name: 'MainRoute')
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<BasePage> createState() => _BasePageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _BasePageState extends State<BasePage> {
+class _MainPageState extends State<MainPage> {
   int _selectedPage = 0;
 
   @override
