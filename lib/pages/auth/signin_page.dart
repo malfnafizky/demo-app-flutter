@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:demo_app/core/configs/app_color.dart';
 import 'package:demo_app/domain/usecases/user_sign_in.dart';
-import 'package:demo_app/pages/auth/signup_page.dart';
 import 'package:demo_app/routes/app_router.gr.dart';
 import 'package:demo_app/service_locator.dart';
 import 'package:demo_app/widgets/default_button.dart';

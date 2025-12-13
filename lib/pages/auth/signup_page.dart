@@ -109,7 +109,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        context.pop();
+                        context.maybePop();
                       },
                       style: ButtonStyle(
                         padding: WidgetStateProperty.all(EdgeInsets.zero),

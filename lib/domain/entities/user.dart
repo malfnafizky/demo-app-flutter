@@ -6,8 +6,6 @@ class User {
   final String lastName;
   final String gender;
   final String image;
-  final String accessToken;
-  final String refreshToken;
 
   User({
     required this.id,
@@ -17,7 +15,5 @@ class User {
     required this.lastName,
     required this.gender,
     required this.image,
-    required this.accessToken,
-    required this.refreshToken,
   });
 }

@@ -1,4 +1,3 @@
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -19,7 +18,10 @@ import 'package:demo_app/pages/main_page.dart' as _i1;
 /// [_i1.MainPage]
 class MainRoute extends _i5.PageRouteInfo<void> {
   const MainRoute({List<_i5.PageRouteInfo>? children})
-    : super(MainRoute.name, initialChildren: children);
+      : super(
+          MainRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'MainRoute';
 
@@ -35,7 +37,10 @@ class MainRoute extends _i5.PageRouteInfo<void> {
 /// [_i2.SignUpPage]
 class SignUpRoute extends _i5.PageRouteInfo<void> {
   const SignUpRoute({List<_i5.PageRouteInfo>? children})
-    : super(SignUpRoute.name, initialChildren: children);
+      : super(
+          SignUpRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'SignUpRoute';
 
@@ -51,7 +56,10 @@ class SignUpRoute extends _i5.PageRouteInfo<void> {
 /// [_i3.SigninPage]
 class SignInRoute extends _i5.PageRouteInfo<void> {
   const SignInRoute({List<_i5.PageRouteInfo>? children})
-    : super(SignInRoute.name, initialChildren: children);
+      : super(
+          SignInRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'SignInRoute';
 
@@ -67,7 +75,10 @@ class SignInRoute extends _i5.PageRouteInfo<void> {
 /// [_i4.SplashPage]
 class SplashRoute extends _i5.PageRouteInfo<void> {
   const SplashRoute({List<_i5.PageRouteInfo>? children})
-    : super(SplashRoute.name, initialChildren: children);
+      : super(
+          SplashRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'SplashRoute';
 

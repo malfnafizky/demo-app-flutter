@@ -9,8 +9,6 @@ class UserModel extends User {
     required super.lastName,
     required super.gender,
     required super.image,
-    required super.accessToken,
-    required super.refreshToken,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> map) {
@@ -22,8 +20,6 @@ class UserModel extends User {
       lastName: map['lastName'] ?? '',
       gender: map['gender'] ?? '',
       image: map['image'] ?? '',
-      accessToken: map['accessToken'] ?? '',
-      refreshToken: map['refreshToken'] ?? '',
     );
   }
 
@@ -35,8 +31,6 @@ class UserModel extends User {
     String? lastName,
     String? gender,
     String? image,
-    String? accessToken,
-    String? refreshToken,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -46,8 +40,6 @@ class UserModel extends User {
       lastName: lastName ?? this.lastName,
       gender: gender ?? this.gender,
       image: image ?? this.image,
-      accessToken: accessToken ?? this.accessToken,
-      refreshToken: refreshToken ?? this.refreshToken,
     );
   }
 }

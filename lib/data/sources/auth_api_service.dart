@@ -7,7 +7,7 @@ import 'package:demo_app/service_locator.dart';
 import 'package:dio/dio.dart';
 
 abstract interface class AuthApiService {
-  Future<UserModel> signIn({
+  Future<Map<String, dynamic>> signIn({
     required String username,
     required String password,
   });
@@ -17,14 +17,11 @@ class AuthApiServiceImpl implements AuthApiService {
   final DioClient _dioClient = sl<DioClient>();
 
   @override
-  Future<UserModel> signIn({
+  Future<Map<String, dynamic>> signIn({
     required String username,
     required String password,
   }) async {
     try {
-      print('[SignIn - ValueCheck] username : ${username}');
-      print('[SignIn - ValueCheck] password : ${password}');
-
       final response = await _dioClient.post(
         ApiUrls.signIn,
         data: {'username': username, 'password': password},
@@ -34,7 +31,7 @@ class AuthApiServiceImpl implements AuthApiService {
         throw ServerException('Invalid credentials');
       }
 
-      return UserModel.fromJson(response.data);
+      return response.data;
     } on DioException catch (dioError) {
       throw DioExceptionHandler.handle(dioError);
     } catch (e) {
