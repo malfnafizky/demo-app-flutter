@@ -1,3 +1,3 @@
 class BoxNames {
-  static const userBoxName = 'user-box';
+  static const userBox = 'user-box';
 }

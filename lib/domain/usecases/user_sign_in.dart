@@ -3,14 +3,14 @@ import 'package:demo_app/core/error/failures.dart';
 import 'package:demo_app/core/usecase/usecase.dart';
 import 'package:demo_app/domain/entities/User.dart';
 import 'package:demo_app/domain/repositories/auth_repository.dart';
-import 'package:demo_app/service_locator.dart';
 
 class UserSignInUseCase implements UseCase<User, Map<String, dynamic>> {
-  final AuthRepository _authRepository = sl<AuthRepository>();
+  final AuthRepository authRepository;
+  UserSignInUseCase(this.authRepository);
 
   @override
   Future<Either<Failure, User>> call(Map<String, dynamic> params) async {
-    return await _authRepository.signIn(
+    return await authRepository.signIn(
       username: params['username'] ?? '',
       password: params['password'] ?? '',
     );

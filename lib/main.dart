@@ -1,10 +1,11 @@
 import 'package:demo_app/core/configs/theme.dart';
+import 'package:demo_app/init_dependencies.dart';
 import 'package:demo_app/routes/app_router.dart';
-import 'package:demo_app/service_locator.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  setupServiceLocator();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initDependencies();
   runApp(const MyApp());
 }
 

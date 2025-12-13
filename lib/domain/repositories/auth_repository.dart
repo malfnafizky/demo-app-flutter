@@ -7,4 +7,8 @@ abstract class AuthRepository {
     required String username,
     required String password,
   });
+
+  Future<String?> getAccessToken();
+
+  Future<Either<Failure, bool>> currentUser({required String accessToken});
 }

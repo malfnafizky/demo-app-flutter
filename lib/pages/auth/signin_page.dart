@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:demo_app/core/configs/app_color.dart';
-import 'package:demo_app/domain/usecases/user_sign_in.dart';
 import 'package:demo_app/routes/app_router.gr.dart';
-import 'package:demo_app/service_locator.dart';
 import 'package:demo_app/widgets/default_button.dart';
 import 'package:demo_app/widgets/input_field.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +85,7 @@ class _SigninPageState extends State<SigninPage> {
                           'username': _usernameController.text.trim(),
                           'password': _passwordController.text.trim(),
                         };
-                        sl<UserSignInUseCase>().call(_userSignInParams);
+                        // sl<UserSignInUseCase>().call(_userSignInParams);
                       },
                     ),
                   ],
