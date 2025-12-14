@@ -3,10 +3,11 @@ import 'package:demo_app/core/error/exceptions.dart';
 import 'package:demo_app/core/error/failures.dart';
 import 'package:demo_app/core/storage/hive/user/user_model_storage.dart';
 import 'package:demo_app/core/storage/secure/secure_storage.dart';
-import 'package:demo_app/data/models/user_model.dart';
-import 'package:demo_app/data/sources/auth_api_data_source.dart';
-import 'package:demo_app/data/sources/auth_local_data_source.dart';
-import 'package:demo_app/domain/repositories/auth_repository.dart';
+import 'package:demo_app/data/auth/models/user_model.dart';
+import 'package:demo_app/data/auth/sources/auth_api_data_source.dart';
+import 'package:demo_app/data/auth/sources/auth_local_data_source.dart';
+import 'package:demo_app/domain/auth/entities/user.dart';
+import 'package:demo_app/domain/auth/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   final AuthApiDataSource apiDataSource;
@@ -19,6 +20,7 @@ class AuthRepositoryImpl extends AuthRepository {
     this.secureStorage,
   );
 
+  // ========== SignIn ==========
   @override
   Future<Either<Failure, UserModel>> signIn({
     required String username,
@@ -50,6 +52,7 @@ class AuthRepositoryImpl extends AuthRepository {
   @override
   Future<String?> getAccessToken() => secureStorage.getAccessToken();
 
+  // ========== CurrentUser ==========
   @override
   Future<Either<Failure, bool>> currentUser({
     required String accessToken,
@@ -72,5 +75,11 @@ class AuthRepositoryImpl extends AuthRepository {
       print('[ValidateToken - Failure] message : ${e.message}');
       return left(Failure(e.message));
     }
+  }
+
+  @override
+  Future<UserModelStorage?> getLocalUser() async {
+    final result = await localDataSource.loadUser(key: 'current-user');
+    return result;
   }
 }

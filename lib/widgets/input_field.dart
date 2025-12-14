@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 class InputField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
+  final String? Function(String?)? validator;
   final bool isObsecureText;
 
   const InputField({
     super.key,
     required this.hintText,
     required this.controller,
+    required this.validator,
     this.isObsecureText = false,
   });
 
@@ -21,12 +23,7 @@ class InputField extends StatelessWidget {
         hintText: hintText,
         hintStyle: TextStyle(color: AppPallete.borderColor),
       ),
-      validator: (value) {
-        if (value!.isEmpty) {
-          return '$hintText is missing';
-        }
-        return null;
-      },
+      validator: validator,
       obscureText: isObsecureText,
     );
   }

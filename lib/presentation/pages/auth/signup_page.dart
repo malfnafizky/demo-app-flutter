@@ -62,6 +62,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     InputField(
                       hintText: 'Username',
                       controller: _usernameController,
+                      validator: (value) => value == null || value.isEmpty
+                          ? 'Username wajib diisi'
+                          : null,
                     ),
                     const SizedBox(height: 14),
                     const Text(
@@ -72,7 +75,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    InputField(hintText: 'Email', controller: _emailController),
+                    InputField(
+                      hintText: 'Email',
+                      controller: _emailController,
+                      validator: (value) => value == null || value.isEmpty
+                          ? 'Email wajib diisi'
+                          : null,
+                    ),
                     const SizedBox(height: 14),
                     const Text(
                       'Password',
@@ -86,6 +95,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       hintText: 'Password',
                       controller: _passwordController,
                       isObsecureText: true,
+                      validator: (value) => value == null || value.isEmpty
+                          ? 'Password wajib diisi'
+                          : null,
                     ),
                     const SizedBox(height: 24),
                     DefaultButton(

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:demo_app/core/error/failures.dart';
 import 'package:demo_app/core/usecase/usecase.dart';
-import 'package:demo_app/domain/repositories/auth_repository.dart';
+import 'package:demo_app/domain/auth/repositories/auth_repository.dart';
 
 class UserAuthCheckUseCase implements UseCase<bool, NoParams> {
   final AuthRepository authRepository;

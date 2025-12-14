@@ -6,7 +6,7 @@ abstract interface class AuthLocalDataSource {
     required String key,
     required UserModelStorage user,
   });
-  UserModelStorage loadUser({required String key});
+  Future<UserModelStorage?> loadUser({required String key});
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
@@ -23,7 +23,13 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   }
 
   @override
-  UserModelStorage loadUser({required String key}) {
-    return box.get(key);
+  Future<UserModelStorage?> loadUser({required String key}) async {
+    final result = await box.get(key, defaultValue: null);
+
+    if (result is UserModelStorage) {
+      return result;
+    } else {
+      return null;
+    }
   }
 }
